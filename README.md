@@ -13,28 +13,29 @@ The processor operates with a two-phase clock system (clk1 and clk2), enabling t
 The design uses the following key components to store intermediate data, operands, and instructions:
 
 Program Counter (PC): Tracks the memory address of the current instruction being executed.  
-Pipeline Registers: Each pipeline stage has its own registers to store intermediate results:
-IF_ID: Holds the instruction and the next program counter (NPC) after the Instruction Fetch stage.
-ID_EX: Stores the decoded instruction, operands, and the instruction type after the Instruction Decode stage.
-EX_MEM: Holds the ALU result and the operands after the Execute stage.
-MEM_WB: Stores the final data (from memory or ALU) before it is written back to the register file.
-Register File (Reg): A 32x32-bit array representing 32 general-purpose registers (R0 to R31) for holding operand data.
-Memory (Mem): A 1024x32-bit memory array to store instructions and data.
+Pipeline Registers: Each pipeline stage has its own registers to store intermediate results:  
+IF_ID: Holds the instruction and the next program counter (NPC) after the Instruction Fetch stage.  
+ID_EX: Stores the decoded instruction, operands, and the instruction type after the Instruction Decode stage.  
+EX_MEM: Holds the ALU result and the operands after the Execute stage.  
+MEM_WB: Stores the final data (from memory or ALU) before it is written back to the register file. 
+Register File (Reg): A **32x32-bit** array representing 32 general-purpose registers (R0 to R31) for holding operand data.    
+Memory (Mem): A **1024x32-bit** memory array to store instructions and data.  
 # Instruction Set and Opcode Definitions
-The processor supports a basic set of instructions, with each opcode corresponding to a specific operation. Key opcodes include:
+The processor supports a basic set of instructions, with each opcode corresponding to a specific operation. 
 
-Arithmetic and Logic Instructions: ADD, SUB, AND, OR, SLT, MUL
-Immediate Arithmetic: ADDI, SUBI, SLTI
-Memory Access Instructions: LW (load word) and SW (store word)
-Branching: BEQZ (branch if equal to zero) and BNEQZ (branch if not equal to zero)
-Special Instruction: HLT (halt the processor)
+Key opcodes include:  
+Arithmetic and Logic Instructions: ADD, SUB, AND, OR, SLT, MUL  
+Immediate Arithmetic: ADDI, SUBI, SLTI  
+Memory Access Instructions: LW (load word) and SW (store word)  
+Branching: BEQZ (branch if equal to zero) and BNEQZ (branch if not equal to zero)  
+Special Instruction: HLT (halt the processor)  
 These instructions are grouped into instruction types, such as:
 
-RR_ALU: Register-Register ALU operations.
-RM_ALU: Register-Immediate ALU operations.
-LOAD and STORE: For memory access.
-BRANCH: For conditional branch instructions.
-HALT: To stop the processor after the HLT instruction.
+RR_ALU: Register-Register ALU operations.  
+RM_ALU: Register-Immediate ALU operations.  
+LOAD and STORE: For memory access.  
+BRANCH: For conditional branch instructions.  
+HALT: To stop the processor after the HLT instruction.  
 Each instruction type determines how operands are processed and which pipeline stages are involved.
 
 # Pipeline Stages: In-Depth Explanation
