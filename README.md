@@ -14,12 +14,12 @@ The design uses the following key components to store intermediate data, operand
 
 * Program Counter (PC): Tracks the memory address of the current instruction being executed.  
 * Pipeline Registers: Each pipeline stage has its own registers to store intermediate results:  
--IF_ID: Holds the instruction and the next program counter (NPC) after the Instruction Fetch stage.  
--ID_EX: Stores the decoded instruction, operands, and the instruction type after the Instruction Decode stage.  
--EX_MEM: Holds the ALU result and the operands after the Execute stage.  
--MEM_WB: Stores the final data (from memory or ALU) before it is written back to the register file. 
--Register File (Reg): A **32x32-bit** array representing 32 general-purpose registers (R0 to R31) for holding operand data.      
--Memory (Mem): A **1024x32-bit** memory array to store instructions and data.  
+* IF_ID: Holds the instruction and the next program counter (NPC) after the Instruction Fetch stage.  
+* ID_EX: Stores the decoded instruction, operands, and the instruction type after the Instruction Decode stage.  
+* EX_MEM: Holds the ALU result and the operands after the Execute stage.  
+* MEM_WB: Stores the final data (from memory or ALU) before it is written back to the register file. 
+* Register File (Reg): A **32x32-bit** array representing 32 general-purpose registers (R0 to R31) for holding operand data.      
+* Memory (Mem): A **1024x32-bit** memory array to store instructions and data.  
 
 # Instruction Set and Opcode Definitions
 The processor supports a basic set of instructions, with each opcode corresponding to a specific operation. 
